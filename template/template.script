@@ -28,20 +28,20 @@ state.time = 0.0;
 //--------------------------------- Refresh (Logo animation) --------------------------
 
 # cycle through all images
-for (i = 0; i < NUM; i++)
-  flyingman_image[i] = Image("progress-" + i + ".png");
+
+flyingman_image = Image("background.png");
+
 flyingman_sprite = Sprite();
 
 # set image position
-flyingman_sprite.SetX(Window.GetX() + (Window.GetWidth(0) / 2 - flyingman_image[0].GetWidth() / 2)); # Place images in the center
-flyingman_sprite.SetY(Window.GetY() + (Window.GetHeight(0) / 2 - flyingman_image[0].GetHeight() / 2));
+flyingman_sprite.SetX(Window.GetX() + (Window.GetWidth(0) / 2 - flyingman_image.GetWidth() / 2)); # Place images in the center
+flyingman_sprite.SetY(Window.GetY() + (Window.GetHeight(0) / 2 - flyingman_image.GetHeight() / 2));
 
 progress = 0;
 
 fun refresh_callback ()
   {
-    flyingman_sprite.SetImage(flyingman_image[Math.Int(progress / SPEED) % NUM]);
-    progress++;
+    flyingman_sprite.SetImage(flyingman_image);
   }
 
 Plymouth.SetRefreshFunction (refresh_callback);
